@@ -57,7 +57,7 @@ public class SignUpActivity extends AppCompatActivity {
         finish();
     }
 
-    public void goToSigInAct(View view){
+    public void goToSignInAct(View view){
         Intent intent = new Intent(SignUpActivity.this, SignInActivity.class);
         startActivity(intent);
         finish();
@@ -73,7 +73,7 @@ public class SignUpActivity extends AppCompatActivity {
         // Instantiate The Request Queue:
         RequestQueue queue = Volley.newRequestQueue(SignUpActivity.this);
         // The URL Posting TO:
-        String url = "http://192.168.0.104:9080/api/v1/user/register";
+        String url = "http://192.168.0.113:9080/api/v1/user/register";
 
 
 
@@ -82,7 +82,7 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
 
-                if(response.equalsIgnoreCase("success")){
+                if(response.equalsIgnoreCase("Success")){
                     first_name.setText(null);
                     last_name.setText(null);
                     email.setText(null);

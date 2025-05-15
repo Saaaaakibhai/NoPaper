@@ -16,19 +16,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/alt_act_img" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="8dp"
         android:text="Sign In"
 
+        android:textColor="@color/Black"
         android:textSize="30sp"
+        android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@+id/imageView2"
-        tools:layout_editor_absoluteX="0dp" />
+        tools:layout_editor_absoluteX="10dp" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -54,6 +55,7 @@
             android:layout_height="55dp"
             android:layout_marginTop="7dp"
             android:paddingLeft="10dp"
+            android:inputType="textPassword"
             android:background="@drawable/input_text_field_styling"
             android:hint="Password"/>
 
@@ -76,8 +78,9 @@
             android:layout_marginTop="10dp"
             android:onClick="goToSigUpAct"
             android:text="@string/go_to_sign_up"
-            android:textColor="@color/PaleTurquoise"
-            android:textSize="18sp" />
+            android:textColor="@color/Black"
+            android:textSize="18sp"
+            android:textStyle="normal" />
 
 
     </LinearLayout>
@@ -87,6 +90,8 @@
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="130dp"
+        android:layout_marginTop="-20dp"
         android:background="@color/MediumAquamarine"
         android:onClick="goToHome"
         android:padding="10dp"

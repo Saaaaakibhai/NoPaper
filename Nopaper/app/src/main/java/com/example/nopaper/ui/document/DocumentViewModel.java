@@ -10,7 +10,7 @@ public class DocumentViewModel extends ViewModel {
 
     public DocumentViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is Document");
+        mText.setValue("This is document");
     }
 
     public LiveData<String> getText() {

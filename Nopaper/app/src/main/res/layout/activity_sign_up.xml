@@ -4,31 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/alt_img"
+    android:background="@drawable/alt_img02"
     android:padding="10dp"
     tools:context=".SignUpActivity">
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="268dp"
-        android:layout_height="195dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/alt_act_img" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Sign Up"
+        android:layout_marginTop="170dp"
 
+        android:text="Sign Up"
+        android:textColor="@color/Black"
         android:textSize="30sp"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2"
-        tools:layout_editor_absoluteX="0dp" />
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="10dp" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -118,11 +109,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:onClick="goToSignInAct"
             android:text="@string/go_to_sign_in"
-            android:textColor="@color/PaleTurquoise"
+            android:textColor="@color/Black"
             android:textSize="18sp"
-            android:onClick="goToSigInAct"
-            />
+            android:textStyle="normal" />
 
 
     </LinearLayout>
@@ -132,6 +123,7 @@
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="135dp"
         android:background="@color/MediumAquamarine"
         android:onClick="goToHome"
         android:padding="10dp"

@@ -1,18 +1,16 @@
-package com.example.nopaper.ui.gallery;
+package com.example.nopaper.ui.text;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class GalleryViewModel extends ViewModel {
+public class TextViewModel extends ViewModel {
 
     private final MutableLiveData<String> mText;
 
-    public GalleryViewModel() {
+    public TextViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("Welcome to No Paper app\n" +
-                "" +
-                "\nThis is gallery fragment");
+        mText.setValue("This is home fragment");
     }
 
     public LiveData<String> getText() {
