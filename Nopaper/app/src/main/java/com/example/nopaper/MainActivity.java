@@ -95,15 +95,18 @@ public class MainActivity extends AppCompatActivity {
                 getSupportFragmentManager().beginTransaction()
                         .replace(R.id.fragment_container, selectedFragment, tag)
                         .commit();
+                getSupportActionBar().setTitle(item.getTitle());
             }
             drawer.closeDrawer(androidx.core.view.GravityCompat.START);
             return true;
+
         });
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.fragment_container, new GalleryFragment(), "GalleryFragment")
                     .commit();
         }
+
 
         // Get the header view from NavigationView
         View headerView = navigationView.getHeaderView(0);
