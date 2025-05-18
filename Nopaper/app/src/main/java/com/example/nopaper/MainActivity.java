@@ -11,10 +11,18 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.nopaper.dialog.BottomSheetFragment;
+import com.example.nopaper.ui.document.DocumentBottomSheetFragment;
+import com.example.nopaper.ui.document.DocumentFragment;
+import com.example.nopaper.ui.gallery.GalleryBottomSheetFragment;
 import com.example.nopaper.ui.gallery.GalleryFragment;
+import com.example.nopaper.ui.text.TextBottomSheetFragment;
+import com.example.nopaper.ui.text.TextFragment;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -23,6 +31,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.nopaper.databinding.ActivityMainBinding;
+import com.example.nopaper.R;
+
 
 public class MainActivity extends AppCompatActivity {
     // Show the Database User Data to the Nav Header Main
@@ -40,13 +50,20 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         setSupportActionBar(binding.appBarMain.toolbar);
-        binding.appBarMain.fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                BottomSheetFragment bottomSheetFragment = new BottomSheetFragment();
-                bottomSheetFragment.show(getSupportFragmentManager(), "BottomSheetFragment");
+        binding.appBarMain.fab.setOnClickListener(view -> {
+            Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.fragment_container);
+            if (currentFragment instanceof GalleryFragment) {
+                GalleryBottomSheetFragment galleryBottomSheetFragment = new GalleryBottomSheetFragment();
+                galleryBottomSheetFragment.show(getSupportFragmentManager(), "GalleryBottomSheet");
+            } else if (currentFragment instanceof DocumentFragment) {
+                DocumentBottomSheetFragment documentBottomSheetFragment = new DocumentBottomSheetFragment();
+                documentBottomSheetFragment.show(getSupportFragmentManager(), "DocumentBottomSheet");
+            } else if (currentFragment instanceof TextFragment) {
+                TextBottomSheetFragment textBottomSheetFragment = new TextBottomSheetFragment();
+                textBottomSheetFragment.show(getSupportFragmentManager(), "TextBottomSheet");
             }
         });
+
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
         // Passing each menu ID as a set of Ids because each
@@ -58,6 +75,35 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+        navigationView.setNavigationItemSelectedListener(item -> {
+
+            Fragment selectedFragment = null;
+            String tag = null;;
+            if (item.getItemId() == R.id.nav_gallery) {
+                selectedFragment = new GalleryFragment();
+                tag = "GalleryFragment";
+            } else if (item.getItemId() == R.id.nav_document) {
+                selectedFragment = new DocumentFragment();
+                tag = "DocumentFragment";
+            } else if (item.getItemId() == R.id.nav_text) {
+                selectedFragment = new TextFragment();
+                tag = "TextFragment";
+            }
+
+            if (selectedFragment != null) {
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_container, selectedFragment, tag)
+                        .commit();
+            }
+            drawer.closeDrawer(androidx.core.view.GravityCompat.START);
+            return true;
+        });
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.fragment_container, new GalleryFragment(), "GalleryFragment")
+                    .commit();
+        }
 
         // Get the header view from NavigationView
         View headerView = navigationView.getHeaderView(0);
@@ -76,8 +122,6 @@ public class MainActivity extends AppCompatActivity {
         tvFirstName.setText(firstName != null ? firstName : "First Name");
         tvLastName.setText(lastName != null ? lastName : "Last Name");
         tvEmail.setText(email != null ? email : "Email");
-
-
     }
 
     @Override
@@ -98,7 +142,6 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
     @Override
     public boolean onSupportNavigateUp() {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
@@ -106,15 +149,7 @@ public class MainActivity extends AppCompatActivity {
                 || super.onSupportNavigateUp();
     }
 
-
-
-
     private void signUserOut() {
-        // Sign-out logic
-        tv_first_name.setText(null);
-        tv_last_name.setText(null);
-        tv_email.setText(null);
-        // Snackbar.make(binding.getRoot(), "Signing out...", Snackbar.LENGTH_SHORT).show();
         Toast.makeText(MainActivity.this, "The User Signed Out", Toast.LENGTH_LONG).show();
         // Example: Redirect to login screen
         Intent intent = new Intent(MainActivity.this, SignInActivity.class);

@@ -25,56 +25,36 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
             android:layout_marginTop="5dp"
+            android:layout_marginBottom="16dp"
             android:fontFamily="sans-serif-black"
             android:padding="8dp"
             android:text="Click To Save Your File"
             android:textAlignment="viewStart"
             android:textColor="@color/Black"
-            android:textSize="25dp" />
+            android:textSize="25dp"
+            />
 
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/clickphoto"
+        android:id="@+id/createtext"
         android:layout_width="374dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_height="61dp"
         android:orientation="horizontal"
         android:padding="10dp">
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_menu_camera" />
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_text_icon" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
             android:layout_marginLeft="30dp"
             android:fontFamily="sans-serif-medium"
-            android:text="Click a new photo"
-            android:textColor="@color/Black"
-            android:textSize="16sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/uploaddevice"
-        android:layout_width="374dp"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="10dp">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_menu_gallery" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:fontFamily="sans-serif-medium"
-            android:text="Upload from device"
+            android:text="Save your text or link"
             android:textColor="@color/Black"
             android:textSize="16sp" />
 

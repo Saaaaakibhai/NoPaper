@@ -12,7 +12,7 @@ public class GalleryViewModel extends ViewModel {
         mText = new MutableLiveData<>();
         mText.setValue("Welcome to No Paper app\n" +
                 "" +
-                "\nThis is gallery fragment");
+                "\nThis is gallery tab");
     }
 
     public LiveData<String> getText() {

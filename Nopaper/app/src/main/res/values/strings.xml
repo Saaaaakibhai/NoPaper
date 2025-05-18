@@ -14,21 +14,20 @@
     <string name="go_to_sign_up">Don\'t Have and account? Sign Up</string>
     <string name="signOut">Sign Out</string>
 
-<!--    This is basically used for tranparent dialog box-->
+    <!--    This is basically used for tranparent dialog box-->
     <style name="BottomSheetDialogTheme" parent="Theme.MaterialComponents.Light.BottomSheetDialog">
         <item name="bottomSheetStyle">@style/BottomSheetStyle</item>
         <item name="android:windowIsFloating">false</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
+
     <style name="BottomSheetStyle" parent="Widget.MaterialComponents.BottomSheet.Modal">
         <item name="android:background">@android:color/transparent</item>
         <item name="backgroundTint">@android:color/transparent</item>
         <item name="android:layout_margin">0dp</item>
         <item name="android:padding">0dp</item>
     </style>
-<!-- End-->
-
-
+    <!-- End-->
 
 
 </resources>

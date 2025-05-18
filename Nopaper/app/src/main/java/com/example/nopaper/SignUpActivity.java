@@ -89,6 +89,10 @@ public class SignUpActivity extends AppCompatActivity {
                     password.setText(null);
                     confirm.setText(null);
                     Toast.makeText(SignUpActivity.this, "Registration Successful", Toast.LENGTH_LONG).show();
+                    // Redirect to SignInActivity
+                    Intent intent = new Intent(SignUpActivity.this, SignInActivity.class);
+                    startActivity(intent);
+                    finish();
                 }
                 // End Of Response If Block.
 
