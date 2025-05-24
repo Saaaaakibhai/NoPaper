@@ -51,19 +51,18 @@ public class MainActivity extends AppCompatActivity {
 
         setSupportActionBar(binding.appBarMain.toolbar);
         binding.appBarMain.fab.setOnClickListener(view -> {
-            Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.fragment_container);
-            if (currentFragment instanceof GalleryFragment) {
-                GalleryBottomSheetFragment galleryBottomSheetFragment = new GalleryBottomSheetFragment();
-                galleryBottomSheetFragment.show(getSupportFragmentManager(), "GalleryBottomSheet");
-            } else if (currentFragment instanceof DocumentFragment) {
-                DocumentBottomSheetFragment documentBottomSheetFragment = new DocumentBottomSheetFragment();
-                documentBottomSheetFragment.show(getSupportFragmentManager(), "DocumentBottomSheet");
-            } else if (currentFragment instanceof TextFragment) {
-                TextBottomSheetFragment textBottomSheetFragment = new TextBottomSheetFragment();
-                textBottomSheetFragment.show(getSupportFragmentManager(), "TextBottomSheet");
+            NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
+            int currentDestinationId = navController.getCurrentDestination().getId();
+
+            if (currentDestinationId == R.id.nav_gallery) {
+                new GalleryBottomSheetFragment().show(getSupportFragmentManager(), "GalleryBottomSheet");
+            } else if (currentDestinationId == R.id.nav_document) {
+                new DocumentBottomSheetFragment().show(getSupportFragmentManager(), "DocumentBottomSheet");
+            } else if (currentDestinationId == R.id.nav_text) {
+                new TextBottomSheetFragment().show(getSupportFragmentManager(), "TextBottomSheet");
             }
         });
-
+        // Navigation setup (Jetpack Navigation handles fragment changes)
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
         // Passing each menu ID as a set of Ids because each
@@ -75,38 +74,6 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
-
-        navigationView.setNavigationItemSelectedListener(item -> {
-
-            Fragment selectedFragment = null;
-            String tag = null;;
-            if (item.getItemId() == R.id.nav_gallery) {
-                selectedFragment = new GalleryFragment();
-                tag = "GalleryFragment";
-            } else if (item.getItemId() == R.id.nav_document) {
-                selectedFragment = new DocumentFragment();
-                tag = "DocumentFragment";
-            } else if (item.getItemId() == R.id.nav_text) {
-                selectedFragment = new TextFragment();
-                tag = "TextFragment";
-            }
-
-            if (selectedFragment != null) {
-                getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_container, selectedFragment, tag)
-                        .commit();
-                getSupportActionBar().setTitle(item.getTitle());
-            }
-            drawer.closeDrawer(androidx.core.view.GravityCompat.START);
-            return true;
-
-        });
-        if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.fragment_container, new GalleryFragment(), "GalleryFragment")
-                    .commit();
-        }
-
 
         // Get the header view from NavigationView
         View headerView = navigationView.getHeaderView(0);
