@@ -43,19 +43,23 @@
         android:padding="10dp">
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="45dp"
+            android:layout_height="48dp"
             android:src="@drawable/ic_menu_camera" />
 
-        <TextView
+        <Button
+            android:id="@+id/clicknewphoto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
+            android:layout_marginLeft="0dp"
             android:fontFamily="sans-serif-medium"
             android:text="Click a new photo"
             android:textColor="@color/Black"
-            android:textSize="16sp" />
+            android:textSize="14sp"
+            android:background="@android:color/transparent" />
+
     </LinearLayout>
+
 
     <LinearLayout
         android:id="@+id/uploaddevice"
@@ -65,20 +69,21 @@
         android:padding="10dp">
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="45dp"
+            android:layout_height="48dp"
             android:src="@drawable/ic_menu_gallery" />
 
-        <TextView
+        <Button
+            android:id="@+id/uploadphotodevice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
+            android:layout_marginLeft="0dp"
             android:fontFamily="sans-serif-medium"
             android:text="Upload from device"
             android:textColor="@color/Black"
-            android:textSize="16sp" />
+            android:textSize="14sp"
+            android:background="@android:color/transparent" />
 
     </LinearLayout>
-
 
 </LinearLayout>

@@ -44,19 +44,20 @@
         android:padding="10dp">
 
         <ImageView
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="42dp"
+            android:layout_height="45dp"
             android:src="@drawable/document" />
 
-        <TextView
+        <Button
+            android:id="@+id/uploadfiledevice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:layout_marginLeft="30dp"
+            android:layout_marginLeft="0dp"
             android:fontFamily="sans-serif-medium"
             android:text="Upload from device"
             android:textColor="@color/Black"
-            android:textSize="16sp" />
+            android:textSize="14sp"
+            android:background="@android:color/transparent"/>
 
     </LinearLayout>
 
